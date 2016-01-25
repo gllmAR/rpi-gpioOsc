@@ -1,7 +1,7 @@
 #!/usr/bin/env python2.7
 
-## RPI Gpio interrupt OSC ##
-## v0.02 ##
+## RPI Gpio OSC ##
+## v0.03 ##
 ## gllmar 2015 ##
 
 
