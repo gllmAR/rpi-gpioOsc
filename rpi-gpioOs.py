@@ -25,7 +25,7 @@ parser.add_argument('-p','--outputPort', help='Output Port ', default='9999', ty
 parser.add_argument('-o','--oscPath', help='Osc path', default='/gpioOSC')
 parser.add_argument('-b','--bouncetime', help='(de)bouncetime', default='200', type=int)
 parser.add_argument('-r','--resistance', help='pull_up_down resistance (0=off, 1=pullUp,  2=pullDown)', default='2', type=int)
-parser.add_argument('-t','--trigger', help='trigger mode (0=FALLING, 1=RISING, 2=BOTH)', default='0', type=int)
+parser.add_argument('-t','--trigger', help='trigger mode (0= READING, 1=FALLING, 2=RISING, 3=BOTH)', default='0', type=int)
 parser.add_argument('-D','--Debug', help='Debug mode on ', default='1', type=int)
 
 args = parser.parse_args()
@@ -70,14 +70,17 @@ else:
 triggerType = "0"
 #GPIO.FALLING , GPIO.RISING, GPIO.BOTH
 if args.trigger == 0:
-    triggerType = "GPIO.FALLING"
-    GPIO.add_event_detect(args.inputPin, GPIO.FALLING, callback=flagUp, bouncetime=args.bouncetime)
+    triggerType = "GPIO.READING"
 elif args.trigger == 1:
+    triggerType = "GPIO.FALLING""
+    GPIO.add_event_detect(args.inputPin, GPIO.FALLING, callback=flagUp, bouncetime=args.bouncetime)
+elif args.trigger == 2:
     triggerType = "GPIO.RISING"
     GPIO.add_event_detect(args.inputPin, GPIO.RISING, callback=flagUp, bouncetime=args.bouncetime)
-elif args.trigger == 2:
+elif args.trigger == 3:
     triggerType = "GPIO.BOTH"
     GPIO.add_event_detect(args.inputPin, GPIO.BOTH, callback=flagUp, bouncetime=args.bouncetime)
+
 else:
     print("trigger number not valid(try 0/1/2)")
     sys.exit()
@@ -119,6 +122,11 @@ def sendOSC(value):
 # et qui envois si la variable change
 try:
     while 1:
+        if args.trigger == 0
+            if (GPIO.input(inputPin)):
+                print("in")
+            else:
+                print("out")
         if flag > 0:
             sendOSC(1)
             flag = 0
