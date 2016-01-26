@@ -72,7 +72,7 @@ triggerType = "0"
 if args.trigger == 0:
     triggerType = "GPIO.READING"
 elif args.trigger == 1:
-    triggerType = "GPIO.FALLING""
+    triggerType = "GPIO.FALLING"
     GPIO.add_event_detect(args.inputPin, GPIO.FALLING, callback=flagUp, bouncetime=args.bouncetime)
 elif args.trigger == 2:
     triggerType = "GPIO.RISING"
@@ -109,7 +109,7 @@ def sendOSC(value):
         c.connect((args.destination, args.outputPort))   # connection
         oscmsg = OSC.OSCMessage()
         oscmsg.setAddress(args.oscPath)
-        oscmsg.append(1)
+        oscmsg.append(value)
         c.send(oscmsg)
         if args.Debug:
             now = datetime.datetime.now()
@@ -122,11 +122,11 @@ def sendOSC(value):
 # et qui envois si la variable change
 try:
     while 1:
-        if args.trigger == 0
-            if (GPIO.input(inputPin)):
-                print("in")
+        if args.trigger == 0:
+            if (GPIO.input(args.inputPin)):
+                sendOSC(1)
             else:
-                print("out")
+                sendOSC(0)
         if flag > 0:
             sendOSC(1)
             flag = 0
