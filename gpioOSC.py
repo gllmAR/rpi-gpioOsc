@@ -1,8 +1,8 @@
 #!/usr/bin/env python2.7
 
 ## RPI Gpio OSC ##
-## v0.03 ##
-## gllmar 2015 ##
+## v0.04 ##
+## gllmar 2016 ##
 
 
 import OSC              #de pyosc
@@ -113,7 +113,7 @@ def sendOSC(value):
         c.send(oscmsg)
         if args.Debug:
             now = datetime.datetime.now()
-            print now.isoformat()
+            print now.isoformat() +" "+ str(value)
     except OSC.OSCClientError:
         print "Connection Refused"
 
