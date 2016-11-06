@@ -82,11 +82,13 @@ optional arguments:
   -r RESISTANCE, --resistance RESISTANCE
                         pull_up_down resistance (0=off, 1=pullUp, 2=pullDown)
   -t TRIGGER, --trigger TRIGGER
-                        trigger mode (0=FALLING, 1=RISING, 2=BOTH)
+                        trigger mode (0= READING, 1=FALLING, 2=RISING, 3=BOTH)
   -D DEBUG, --Debug DEBUG
                         Debug mode on
 
 ```
+
+
 
 ### todo
 
