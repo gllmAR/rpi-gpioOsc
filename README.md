@@ -27,7 +27,7 @@ cd ~/
 
 mkdir src && cd src
 
-git clone https://github.com/gllmAR/rpi-interuptOsc.git
+git clone https://github.com/gllmAR/rpi-gpioOSC.git
 
 cd rpi-interuptOsc
 
@@ -36,7 +36,7 @@ cd rpi-interuptOsc
 ### Usage
 Run from terminal
 
-`sudo python interuptOsc.py`
+`sudo python gpioOSC.py`
 
 You should see the default parameters :
 ```
@@ -55,7 +55,7 @@ Debug: 1
 these parameters correspond to this line :
 
 ```
-sudo python interuptOsc.py -g 0 -i 23 -d 127.0.0.1 -p 9999 -o /gpioOSC -b 200 -r 2 -t 0 -D 1
+sudo python gpioOSC.py -g 0 -i 23 -d 127.0.0.1 -p 9999 -o /gpioOSC -b 200 -r 2 -t 0 -D 1
 
 
 ```
