@@ -1,11 +1,13 @@
-#!/usr/bin/env python2.7
+#!/usr/bin/env python3.6
 
 ## RPI Gpio OSC ##
-## v0.04 ##
-## gllmar 2016 ##
+## v0.05 ##
+## gllmar 2016-2017 ##
 
 
-import OSC              #de pyosc
+#import OSC              #de pyosc
+from pythonosc import osc_message_builder
+from pythonosc import udp_client
 import RPi.GPIO as GPIO
 import time
 import argparse
@@ -101,21 +103,26 @@ print ("trigger: %s" % triggerType )
 print ("Debug: %s" % args.Debug )
 
 
-## definir la fonction d envoi ##
-c = OSC.OSCClient()
+## definir la fonction d envoi python 2.7##
+#c = OSC.OSCClient()
+
+#def sendOSC(value):
+#    try:
+#        c.connect((args.destination, args.outputPort))   # connection
+#        oscmsg = OSC.OSCMessage()
+#        oscmsg.setAddress(args.oscPath)
+#        oscmsg.append(value)
+#        c.send(oscmsg)
+#        if args.Debug:
+#            now = datetime.datetime.now()
+#            print now.isoformat() +" "+ str(value)
+#    except OSC.OSCClientError:
+#        print "Connection Refused"
+
+client = udp_client.SimpleUDPClient(args.destination, args.outputPort)
 
 def sendOSC(value):
-    try:
-        c.connect((args.destination, args.outputPort))   # connection
-        oscmsg = OSC.OSCMessage()
-        oscmsg.setAddress(args.oscPath)
-        oscmsg.append(value)
-        c.send(oscmsg)
-        if args.Debug:
-            now = datetime.datetime.now()
-            print now.isoformat() +" "+ str(value)
-    except OSC.OSCClientError:
-        print "Connection Refused"
+    client.send_message(args.oscPath, value)
 
 
 # une loop infinie sur le thread principale qui attend
