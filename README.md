@@ -6,18 +6,16 @@ OSC callback attached to a interrupt detection (ex:button press) on a GPIO input
 
 ### Installation
 
+#### dependencies
 
-#### Install the Dependencies
-python 2.7,  python-rpi.gpio and pyOSC
-
-```
-sudo apt-get update && sudo apt-get install python-rpi.gpio
-sudo apt-get install python-setuptools
-sudo easy_install pip
-sudo pip install pyOSC
+* python 3.6+
+* [python-osc](https://github.com/attwad/python-osc)
+* [RPi.GPIO](https://pypi.python.org/pypi/RPi.GPIO)
 
 ```
-
+pip install python-osc
+pip install RPi.GPIO
+```
 
 #### Install rpi-interuptOsc
 from a command line : clone the program to your favorite directory  (~/src/rpi-interuptOsc)
@@ -31,6 +29,7 @@ git clone https://github.com/gllmAR/rpi-gpioOSC.git
 
 cd rpi-interuptOsc
 
+./install.sh
 ```
 
 ### Usage
@@ -89,12 +88,9 @@ optional arguments:
 ```
 
 
-
 ### todo
 
 * multi pin,
-
-
 
 
 
